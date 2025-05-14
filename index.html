@@ -3,46 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <title>Ankush Agarwal - University of Western Ontario</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 2rem;
-            line-height: 1.6;
-        }
-        h1, h2 {
-            color: #2c3e50;
-        }
-        ul {
-            padding-left: 1.2rem;
-        }
-        .email, .links {
-            margin-bottom: 1rem;
-        }
-        .section {
-            margin-top: 2rem;
-        }
-        .photo {
-            width: 150px;
-            height: auto;
-            margin-bottom: 1rem;
-        }
-    </style>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+
+    .container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      max-width: 800px;
+    }
+
+    .info {
+      flex: 1;
+    }
+
+    .photo-container {
+      margin-left: 40px;
+    }
+
+    .photo {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .photo-container {
+        margin-left: 0;
+        margin-top: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1>Ankush Agarwal</h1>
-    <b>Associate Professor</b>
-    <p>University of Western Ontario<br>
-    London, ON, Canada</p>
-    <p>Email: aagarw93 [at] uwo [dot] ca</p>
-
-    <div class="links">
-        <p><a href="https://www.dropbox.com/scl/fi/uz7lxn68dgad995a3c6yh/AnkushAgarwal-CV.pdf?rlkey=b35or0925liacv44sc5fp655f&st=v67vpzal&dl=0">CV in PDF</a> | <a href="https://www.scopus.com/authid/detail.uri?authorId=55757918600">Scopus profile</a></p>
-    </div>
-
-    <div>
-        <img src="#" alt="Photo" class="photo">
+    <div class="container">
+        <div class="info">
+        <h1>Ankush Agarwal</h1>
+        <b>Associate Professor</b>
+        <p>University of Western Ontario<br>
+        London, ON, Canada</p>
+        <p>Email: aagarw93 [at] uwo [dot] ca</p>
+        </div>
+    
+        <div class="links">
+            <p><a href="https://www.dropbox.com/scl/fi/uz7lxn68dgad995a3c6yh/AnkushAgarwal-CV.pdf?rlkey=b35or0925liacv44sc5fp655f&st=v67vpzal&dl=0">CV in PDF</a> | <a href="https://www.scopus.com/authid/detail.uri?authorId=55757918600">Scopus profile</a></p>
+        </div>
+        
+        <div class="photo-container">
+          <img src="#" alt="Photo" class="photo">
+        </div>
     </div>
 
     <div class="section">
