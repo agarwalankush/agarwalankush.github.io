@@ -12,6 +12,25 @@
 
     <title>Ankush Agarwal</title>
     <style>
+    /* body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+    }
+     */
+    /* .container {
+            width: 80%;
+            max-width: 1200px;
+            /* Added max-width for better centering on larger screens */
+            /* background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+    } */ 
+    
     header {
             display: flex;
             justify-content: space-between;
@@ -40,100 +59,32 @@
             object-fit: cover;
             border-radius: 5px;
     }
-
-    /* Tab Navigation Styles */
-    .tab-navigation {
-        margin: 20px 0 20px 0;
-        border-bottom: 2px solid #e9ecef;
+  
+    #publications {
+            margin-top: 20px;
     }
 
-    .tab-nav {
-        display: flex;
-        list-style: none;
-        margin: 0;
-        padding: 0;
+    #publications h2 {
+            text-align: left;
+            margin-bottom: 15px;
     }
 
-    .tab-nav li {
-        margin-right: 5px;
+    #publications ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 auto;
+            width: 90%;
     }
 
-    .tab-nav button {
-        background: none;
-        border: none;
-        padding: 2px 24px 2px 0;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 500;
-        color: #6c757d;
-        border-bottom: 3px solid transparent;
-        transition: all 0.3s ease;
-        border-radius: 4px 4px 0 0;
+    #publications li {
+            padding: 4px 0;
+            margin-bottom: 4px;
     }
 
-    .tab-nav button:hover {
-        color: #495057;
-        background-color: #f8f9fa;
-    }
-
-    .tab-nav button.active {
-        color: #007bff;
-        border-bottom-color: #007bff;
-        background-color: #fff;
-    }
-
-    /* Tab Content Styles */
-    .tab-content {
-        display: none;
-        animation: fadeIn 0.3s ease-in;
-    }
-
-    .tab-content.active {
-        display: block;
-    }
-
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    .tab-content h4 {
-        margin-bottom: 20px;
-        color: #343a40;
-    }
-
-    .tab-content h5 {
-        margin-top: 25px;
-        margin-bottom: 15px;
-        color: #495057;
-        font-weight: 600;
-    }
-
-    .tab-content ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0 auto;
-        width: 90%;
-    }
-
-    .tab-content li {
-        padding: 6px 0;
-        margin-bottom: 6px;
-        line-height: 1.5;
-    }
-
-    .tab-content a {
-        color: #007bff;
-        text-decoration: none;
-    }
-
-    .tab-content a:hover {
-        color: #0056b3;
-        text-decoration: underline;
-    }
   </style>
 </head>
 <body>
+    <!-- <div class="container"> -->
     <div class="container pt-5 allstuffp">
       <header>
         <div class="info">
@@ -149,17 +100,7 @@
         </div>
       </header>
 
-      <!-- Tab Navigation -->
-      <nav class="tab-navigation">
-        <ul class="tab-nav">
-          <li><button class="tab-button active" data-tab="publications">Publications</button></li>
-          <li><button class="tab-button" data-tab="teaching">Teaching</button></li>
-          <li><button class="tab-button" data-tab="phd-students">PhD Students</button></li>
-        </ul>
-      </nav>
-
-      <!-- Publications Tab -->
-      <section id="publications" class="tab-content active">
+      <section id="publications">
         <h4>Publications</h4>
         <h5>Refereed Journals</h5>
         <ul>
@@ -194,10 +135,9 @@
             <li>[2] Numerical approximation of RBSDEs via regularization <b>with</b> E. Gobet and Y. Zou.</li>
             <li>[1] Rare event simulation related to financial risks: Efficient estimation and sensitivity analysis <b>with</b> S. De Marco, E. Gobet and G. Liu.</li>
         </ul>
-      </section>
+    <!-- </section> -->
 
-      <!-- Teaching Tab -->
-      <section id="teaching" class="tab-content">
+    <div class="publications">
         <h4>Teaching</h4>
         <h5>University of Western Ontario</h5>
         <ul>
@@ -214,10 +154,9 @@
             <li>Topics in Financial Economics (Winter 2019–20)</li>
             <li>Financial Markets, Securities and Derivatives (Autumn 2020)</li>
         </ul>
-      </section>
+    </div>
 
-      <!-- PhD Students Tab -->
-      <section id="phd-students" class="tab-content">
+    <div class="publications">
         <h4>PhD Students</h4>
         <h5>Current</h5>
         <ul>
@@ -230,33 +169,8 @@
             <li>[2] Yongjie Wang, UofG (2018–22). <em>Mathematics educator, USA.</em></li>
             <li>[1] Yihan Zou, UofG (2018–20). <em>Lecturer at the University of Glasgow, UK.</em> </li>
         </ul>
-      </section>
-
     </div>
-
-    <script>
-        // Tab switching functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content');
-
-            tabButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const targetTab = this.getAttribute('data-tab');
-                    
-                    // Remove active class from all buttons and contents
-                    tabButtons.forEach(btn => btn.classList.remove('active'));
-                    tabContents.forEach(content => content.classList.remove('active'));
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Show corresponding content
-                    document.getElementById(targetTab).classList.add('active');
-                });
-            });
-        });
-    </script>
+    </div>
 
 </body>
 </html>
