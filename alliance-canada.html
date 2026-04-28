@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <meta name="description" content="Digital Alliance of Canada computing resources guide for Ankush Agarwal's research group at University of Western Ontario.">
+    <meta name="author" content="Ankush Agarwal">
+    <meta name="theme-color" content="#222222">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style-3.css">
+    <title>Digital Alliance of Canada | Ankush Agarwal</title>
+    <style>
+        body {
+            font-size: 15px;
+            color: #333;
+        }
+
+        .page-header {
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ccc;
+            margin-bottom: 25px;
+        }
+
+        .page-header h3 {
+            margin-bottom: 4px;
+        }
+
+        .back-link {
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .back-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .back-link a:hover {
+            text-decoration: underline;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            display: inline-block;
+            min-width: 220px;
+        }
+
+        .toc h6 {
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #343a40;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        .toc ol {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .toc li {
+            margin-bottom: 4px;
+        }
+
+        .toc a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+        }
+
+        .content-section {
+            margin-bottom: 35px;
+        }
+
+        .content-section h4 {
+            color: #343a40;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 6px;
+            margin-bottom: 15px;
+        }
+
+        .content-section p {
+            margin-bottom: 10px;
+            line-height: 1.65;
+        }
+
+        .content-section ol,
+        .content-section ul {
+            padding-left: 22px;
+            margin-bottom: 12px;
+        }
+
+        .content-section li {
+            margin-bottom: 6px;
+            line-height: 1.6;
+        }
+
+        pre {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 12px 16px;
+            font-size: 13px;
+            overflow-x: auto;
+            margin-bottom: 14px;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 13px;
+            color: #c7254e;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px 14px;
+            margin-bottom: 14px;
+            border-radius: 0 4px 4px 0;
+            font-size: 14px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 14px;
+            font-size: 14px;
+        }
+
+        table th {
+            background: #e9ecef;
+            padding: 8px 12px;
+            text-align: left;
+            font-weight: 600;
+            border: 1px solid #dee2e6;
+        }
+
+        table td {
+            padding: 8px 12px;
+            border: 1px solid #dee2e6;
+            vertical-align: top;
+        }
+
+        table tr:nth-child(even) td {
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container pt-5 allstuffp" style="max-width: 860px;">
+
+        <div class="page-header">
+            <div class="back-link mb-2">&larr; <a href="index.html">Ankush Agarwal</a></div>
+            <h3>Digital Alliance of Canada</h3>
+            <p class="text-muted mb-0" style="font-size: 14px;">
+                Computing resources guide for the Agarwal research group &mdash;
+                University of Western Ontario
+            </p>
+        </div>
+
+        <p>
+            The <a href="https://alliancecan.ca/en" target="_blank">Digital Research Alliance of Canada</a>
+            provides national high-performance computing (HPC) infrastructure for Canadian researchers.
+            This page covers how to get access and use the <strong>Nibi</strong> cluster for research computing.
+        </p>
+
+        <div class="toc">
+            <h6>Contents</h6>
+            <ol>
+                <li><a href="#getting-account">Getting an Account</a></li>
+                <li><a href="#ssh-setup">Passwordless SSH Setup</a></li>
+                <li><a href="#mounting">Mounting Data (Mac/Linux)</a></li>
+                <li><a href="#file-transfer">File Transfer</a></li>
+                <li><a href="#group-permissions">Group Permissions</a></li>
+                <li><a href="#job-submission">Job Submission</a></li>
+                <li><a href="#slurm">SLURM Commands</a></li>
+                <li><a href="#visualization">Visualization</a></li>
+            </ol>
+        </div>
+
+        <!-- 1. Getting an Account -->
+        <div class="content-section" id="getting-account">
+            <h4>1. Getting an Account</h4>
+            <p>
+                Create an account at the
+                <a href="https://ccdb.alliancecan.ca/" target="_blank">CCDB portal</a>
+                and use the following sponsor when prompted:
+            </p>
+            <p>
+                <strong>Sponsor:</strong> Ankush Agarwal &nbsp;(<strong>CCRI: aju-094-01</strong>)
+            </p>
+            <p>Once your account is approved, log in to Nibi with:</p>
+            <pre><code>ssh &lt;user&gt;@nibi.alliancecan.ca</code></pre>
+            <div class="note">
+                Replace <code>&lt;user&gt;</code> with your Alliance Canada username throughout this guide.
+            </div>
+        </div>
+
+        <!-- 2. Passwordless SSH -->
+        <div class="content-section" id="ssh-setup">
+            <h4>2. Passwordless SSH Setup</h4>
+            <p>Generate an SSH key pair on your local machine (skip if you already have one):</p>
+            <pre><code>ssh-keygen -t rsa</code></pre>
+            <p>Copy your public key to Nibi so future logins require no password:</p>
+            <pre><code>ssh-copy-id -i ~/.ssh/id_rsa.pub &lt;user&gt;@nibi.alliancecan.ca</code></pre>
+        </div>
+
+        <!-- 3. Mounting Data -->
+        <div class="content-section" id="mounting">
+            <h4>3. Mounting Data (Mac/Linux)</h4>
+            <p>
+                You can mount your Nibi home directory locally using
+                <a href="https://github.com/libfuse/sshfs" target="_blank">sshfs</a>,
+                making it easy to browse and edit remote files.
+            </p>
+            <ol>
+                <li>Install sshfs (e.g., <code>brew install sshfs</code> on Mac or <code>sudo apt install sshfs</code> on Linux).</li>
+                <li>Create a local mount directory: <code>mkdir -p ~/mnt/nibi</code></li>
+                <li>Create a <code>~/bin</code> folder if it does not exist: <code>mkdir -p ~/bin</code></li>
+                <li>
+                    Create the file <code>~/bin/nibi</code> with the following content:
+                    <pre><code>#!/bin/bash
+mount_dir="$HOME/mnt/nibi"
+if (! mountpoint -q $mount_dir); then
+    sshfs &lt;user&gt;@nibi.alliancecan.ca:/home/&lt;user&gt;/ $mount_dir \
+        -o ServerAliveInterval=15,ServerAliveCountMax=3,Compression=no,follow_symlinks
+else
+    umount $mount_dir
+fi</code></pre>
+                </li>
+                <li>Make it executable and add <code>~/bin</code> to your PATH:</li>
+            </ol>
+            <pre><code>chmod +x ~/bin/nibi
+echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc</code></pre>
+            <p>
+                Now typing <code>nibi</code> in your terminal will mount Nibi at <code>~/mnt/nibi</code>;
+                running it again will unmount it.
+            </p>
+        </div>
+
+        <!-- 4. File Transfer -->
+        <div class="content-section" id="file-transfer">
+            <h4>4. File Transfer</h4>
+            <p>
+                The recommended method for transferring large datasets is
+                <a href="https://www.globus.org/" target="_blank">Globus</a>,
+                which provides reliable, high-speed transfers and can resume interrupted transfers automatically.
+            </p>
+            <p>The Globus endpoint for Nibi is:</p>
+            <pre><code>alliancecan#nibi</code></pre>
+            <p>
+                Log in at <a href="https://app.globus.org/" target="_blank">app.globus.org</a>,
+                search for the endpoint above, and use the graphical interface to initiate transfers.
+            </p>
+        </div>
+
+        <!-- 5. Group Permissions -->
+        <div class="content-section" id="group-permissions">
+            <h4>5. Group Permissions</h4>
+            <p>
+                To allow other group members to access your files in the shared project space,
+                run the following commands:
+            </p>
+            <pre><code>chgrp -R def-ankush ~/projects/*/$USER
+chmod -R g+rwXs ~/projects/*/$USER
+chgrp -R def-ankush $HOME
+chmod -R g+rwXs $HOME</code></pre>
+        </div>
+
+        <!-- 6. Job Submission -->
+        <div class="content-section" id="job-submission">
+            <h4>6. Job Submission</h4>
+            <p>
+                Jobs on Nibi are managed by <a href="https://slurm.schedmd.com/" target="_blank">SLURM</a>.
+                Below are common job templates for typical workloads.
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Profile</th>
+                        <th>Cores</th>
+                        <th>Memory</th>
+                        <th>Wall time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Regular</td>
+                        <td>8</td>
+                        <td>32 GB</td>
+                        <td>24 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Short</td>
+                        <td>8</td>
+                        <td>32 GB</td>
+                        <td>3 hours</td>
+                    </tr>
+                    <tr>
+                        <td>Fat (memory-intensive)</td>
+                        <td>32</td>
+                        <td>128 GB</td>
+                        <td>24 hours</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>A minimal SLURM batch script looks like:</p>
+            <pre><code>#!/bin/bash
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=32G
+#SBATCH --time=24:00:00
+#SBATCH --account=def-ankush
+
+module load python/3.11
+python my_script.py</code></pre>
+            <p>Submit with <code>sbatch job.sh</code>. For interactive sessions use:</p>
+            <pre><code>salloc --ntasks=1 --cpus-per-task=4 --mem=16G --time=2:00:00 --account=def-ankush</code></pre>
+        </div>
+
+        <!-- 7. SLURM Commands -->
+        <div class="content-section" id="slurm">
+            <h4>7. SLURM Commands</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Command</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>sq</code></td>
+                        <td>View your queued and running jobs</td>
+                    </tr>
+                    <tr>
+                        <td><code>sshare -U $USER</code></td>
+                        <td>Check your current share usage</td>
+                    </tr>
+                    <tr>
+                        <td><code>scancel &lt;jobid&gt;</code></td>
+                        <td>Cancel a specific job</td>
+                    </tr>
+                    <tr>
+                        <td><code>scancel -u $USER</code></td>
+                        <td>Cancel all your jobs</td>
+                    </tr>
+                    <tr>
+                        <td><code>sacct -j &lt;jobid&gt; --format JobID,ReqMem,MaxRSS,Timelimit,Elapsed</code></td>
+                        <td>Check resource usage of a completed job</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>Add these to your <code>~/.bashrc</code> for more readable <code>sacct</code> output:</p>
+            <pre><code>echo "export SLURM_TIME_FORMAT=relative" >> ~/.bashrc
+echo "export SACCT_FORMAT=JobID%-20,Start%-10,Elapsed%-10,State,AllocCPUS%8,MaxRSS,NodeList" >> ~/.bashrc</code></pre>
+        </div>
+
+        <!-- 8. Visualization -->
+        <div class="content-section" id="visualization">
+            <h4>8. Visualization</h4>
+            <h5 style="font-size: 15px; font-weight: 600; margin-top: 14px; margin-bottom: 8px; color: #495057;">X Forwarding</h5>
+            <p>For lightweight graphical applications, use X forwarding when you connect:</p>
+            <pre><code>ssh -Y &lt;user&gt;@nibi.alliancecan.ca</code></pre>
+
+            <h5 style="font-size: 15px; font-weight: 600; margin-top: 14px; margin-bottom: 8px; color: #495057;">VNC (Remote Desktop)</h5>
+            <p>For a full desktop session on a compute node, use TigerVNC:</p>
+            <ol>
+                <li>Start a VNC server on the compute node (inside an interactive job):</li>
+            </ol>
+            <pre><code>export XDG_RUNTIME_DIR=${SLURM_TMPDIR}
+vncserver</code></pre>
+            <ol start="2">
+                <li>Note the display number (e.g., <code>:1</code>) and the node name, then create an SSH tunnel from your local machine:</li>
+            </ol>
+            <pre><code>ssh &lt;user&gt;@nibi.alliancecan.ca -L &lt;local-port&gt;:&lt;node&gt;:&lt;remote-port&gt;</code></pre>
+            <ol start="3">
+                <li>Connect your local VNC viewer to <code>localhost:&lt;local-port&gt;</code>.</li>
+            </ol>
+            <p>
+                See the
+                <a href="https://docs.alliancecan.ca/wiki/VNC" target="_blank">Alliance Canada VNC documentation</a>
+                for full details.
+            </p>
+        </div>
+
+    </div>
+
+    <footer style="margin-top: 40px; padding-top: 20px; text-align: center; color: #6c757d; font-size: 12px; border-top: 1px solid #e9ecef;">
+        <p><a href="index.html" style="color: #6c757d; text-decoration: none;">&larr; Back to Ankush Agarwal's homepage</a></p>
+    </footer>
+</body>
+</html>
