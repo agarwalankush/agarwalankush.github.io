@@ -222,41 +222,7 @@
             <pre><code>ssh-copy-id -i ~/.ssh/id_rsa.pub &lt;user&gt;@nibi.alliancecan.ca</code></pre>
         </div>
 
-        <!-- 3. Mounting Data -->
-        <div class="content-section" id="mounting">
-            <h4>3. Mounting Data (Mac/Linux)</h4>
-            <p>
-                You can mount your Nibi home directory locally using
-                <a href="https://github.com/libfuse/sshfs" target="_blank">sshfs</a>,
-                making it easy to browse and edit remote files.
-            </p>
-            <ol>
-                <li>Install sshfs (e.g., <code>brew install sshfs</code> on Mac or <code>sudo apt install sshfs</code> on Linux).</li>
-                <li>Create a local mount directory: <code>mkdir -p ~/mnt/nibi</code></li>
-                <li>Create a <code>~/bin</code> folder if it does not exist: <code>mkdir -p ~/bin</code></li>
-                <li>
-                    Create the file <code>~/bin/nibi</code> with the following content:
-                    <pre><code>#!/bin/bash
-mount_dir="$HOME/mnt/nibi"
-if (! mountpoint -q $mount_dir); then
-    sshfs &lt;user&gt;@nibi.alliancecan.ca:/home/&lt;user&gt;/ $mount_dir \
-        -o ServerAliveInterval=15,ServerAliveCountMax=3,Compression=no,follow_symlinks
-else
-    umount $mount_dir
-fi</code></pre>
-                </li>
-                <li>Make it executable and add <code>~/bin</code> to your PATH:</li>
-            </ol>
-            <pre><code>chmod +x ~/bin/nibi
-echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc</code></pre>
-            <p>
-                Now typing <code>nibi</code> in your terminal will mount Nibi at <code>~/mnt/nibi</code>;
-                running it again will unmount it.
-            </p>
-        </div>
-
-        <!-- 4. File Transfer -->
+        <!-- 3. File Transfer -->
         <div class="content-section" id="file-transfer">
             <h4>4. File Transfer</h4>
             <p>
@@ -267,7 +233,7 @@ source ~/.bashrc</code></pre>
             <p>The Globus endpoint for Nibi is:</p>
             <pre><code>alliancecan#nibi</code></pre>
             <p>
-                Log in at <a href="https://app.globus.org/" target="_blank">app.globus.org</a>,
+                Log in at <a href="https://globus.org/" target="_blank">globus.org</a>,
                 search for the endpoint above, and use the graphical interface to initiate transfers.
             </p>
         </div>
@@ -374,33 +340,7 @@ python my_script.py</code></pre>
 echo "export SACCT_FORMAT=JobID%-20,Start%-10,Elapsed%-10,State,AllocCPUS%8,MaxRSS,NodeList" >> ~/.bashrc</code></pre>
         </div>
 
-        <!-- 8. Visualization -->
-        <div class="content-section" id="visualization">
-            <h4>8. Visualization</h4>
-            <h5 style="font-size: 15px; font-weight: 600; margin-top: 14px; margin-bottom: 8px; color: #495057;">X Forwarding</h5>
-            <p>For lightweight graphical applications, use X forwarding when you connect:</p>
-            <pre><code>ssh -Y &lt;user&gt;@nibi.alliancecan.ca</code></pre>
-
-            <h5 style="font-size: 15px; font-weight: 600; margin-top: 14px; margin-bottom: 8px; color: #495057;">VNC (Remote Desktop)</h5>
-            <p>For a full desktop session on a compute node, use TigerVNC:</p>
-            <ol>
-                <li>Start a VNC server on the compute node (inside an interactive job):</li>
-            </ol>
-            <pre><code>export XDG_RUNTIME_DIR=${SLURM_TMPDIR}
-vncserver</code></pre>
-            <ol start="2">
-                <li>Note the display number (e.g., <code>:1</code>) and the node name, then create an SSH tunnel from your local machine:</li>
-            </ol>
-            <pre><code>ssh &lt;user&gt;@nibi.alliancecan.ca -L &lt;local-port&gt;:&lt;node&gt;:&lt;remote-port&gt;</code></pre>
-            <ol start="3">
-                <li>Connect your local VNC viewer to <code>localhost:&lt;local-port&gt;</code>.</li>
-            </ol>
-            <p>
-                See the
-                <a href="https://docs.alliancecan.ca/wiki/VNC" target="_blank">Alliance Canada VNC documentation</a>
-                for full details.
-            </p>
-        </div>
+        
 
     </div>
 
